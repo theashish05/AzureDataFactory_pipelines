@@ -1,0 +1,81 @@
+{
+	"name": "4_set_variable_activity",
+	"properties": {
+		"activities": [
+			{
+				"name": "getPrsnName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "prsn_name",
+					"value": "Ashish"
+				}
+			},
+			{
+				"name": "message",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "getPrsnLoc",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "msg",
+					"value": {
+						"value": "@concat('person name is',variables('prsn_name'),'and location is ',variables('location'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "getPrsnLoc",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "getPrsnName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "location",
+					"value": "Dubai"
+				}
+			}
+		],
+		"variables": {
+			"prsn_name": {
+				"type": "String"
+			},
+			"location": {
+				"type": "String",
+				"defaultValue": "Bangalore"
+			},
+			"msg": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-12T19:40:16Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

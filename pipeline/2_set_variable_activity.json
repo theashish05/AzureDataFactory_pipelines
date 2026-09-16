@@ -1,0 +1,80 @@
+{
+	"name": "2_set_variable_activity",
+	"properties": {
+		"activities": [
+			{
+				"name": "getPersonAge",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "prsn_age",
+					"value": "25"
+				}
+			},
+			{
+				"name": "getPersonCode",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "getPersonAge",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "prsn_code",
+					"value": "5555"
+				}
+			},
+			{
+				"name": "message",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "getPersonCode",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "msg",
+					"value": {
+						"value": "@concat('person age is',variables('prsn_age'),'and also person code is ',variables('prsn_code'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"prsn_age": {
+				"type": "String"
+			},
+			"prsn_code": {
+				"type": "String"
+			},
+			"msg": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-12T19:17:47Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
