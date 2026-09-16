@@ -1,0 +1,80 @@
+{
+	"name": "1_set_variable_activity",
+	"properties": {
+		"activities": [
+			{
+				"name": "getPersonName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "prsn_name",
+					"value": "ashish"
+				}
+			},
+			{
+				"name": "getPersonId",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "getPersonName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "prsn_id",
+					"value": "101"
+				}
+			},
+			{
+				"name": "Message",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "getPersonId",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "msg",
+					"value": {
+						"value": "@concat('person id is ',variables('prsn_id'),'and person name is ',variables('prsn_name'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"prsn_id": {
+				"type": "String"
+			},
+			"prsn_name": {
+				"type": "String"
+			},
+			"msg": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-12T19:17:47Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

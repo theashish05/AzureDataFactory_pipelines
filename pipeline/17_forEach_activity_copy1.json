@@ -1,0 +1,36 @@
+{
+	"name": "17_forEach_activity_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "getlistpfiles",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "fileslist",
+					"value": [
+						"products.txt",
+						"sales.txt",
+						"welcome.txt"
+					]
+				}
+			}
+		],
+		"variables": {
+			"fileslist": {
+				"type": "Array"
+			},
+			"srcfilename": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-15T17:05:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
