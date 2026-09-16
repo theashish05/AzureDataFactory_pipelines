@@ -1,12 +1,12 @@
 {
-	"name": "DS_outbound",
+	"name": "DS_gm_Sub",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"foldername": {
+			"filename": {
 				"type": "string"
 			}
 		},
@@ -15,13 +15,13 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
-					"value": "@concat('outbound/',dataset().foldername)",
+				"fileName": {
+					"value": "@dataset().filename",
 					"type": "Expression"
 				},
+				"folderPath": "inbound",
 				"fileSystem": "devcontainer"
 			}
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }
