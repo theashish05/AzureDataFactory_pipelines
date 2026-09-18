@@ -1,0 +1,27 @@
+{
+	"name": "DS_outbound_folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"foldername": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat('outbound/',dataset().foldername)",
+					"type": "Expression"
+				},
+				"folderPath": "outbound",
+				"container": "devcontainer"
+			}
+		}
+	}
+}
