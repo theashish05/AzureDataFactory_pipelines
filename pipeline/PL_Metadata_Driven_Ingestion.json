@@ -44,6 +44,7 @@
 						"value": "@activity('Lookup_ETL_Control').output.value",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Copy_Dynamic_SQL_To_Bronze",
@@ -201,7 +202,11 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "dbo.Update_ETL_Watermark",
+								"storedProcedureName": {
+									"value": "dbo.Update_ETL_Watermark",
+									"type": "Expression"
+								},
+								"enforceOneTimeExecution": false,
 								"storedProcedureParameters": {
 									"@TableName": {
 										"value": {
