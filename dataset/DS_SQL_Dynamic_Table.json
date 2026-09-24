@@ -14,10 +14,8 @@
 		"type": "SqlServerTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": {
-				"value": "@dataset().pTableName",
-				"type": "Expression"
-			}
+			"schema": "dbo",
+			"table": "@dataset().pTableName"
 		}
 	}
 }
