@@ -1,0 +1,20 @@
+{
+	"name": "DS_ADLS_Bronze_SaudiCustomer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_Telecom",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "customer",
+				"fileSystem": "bronze"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
