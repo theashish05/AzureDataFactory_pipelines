@@ -202,24 +202,14 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": {
-									"value": "dbo.Update_ETL_Watermark",
-									"type": "Expression"
-								},
-								"enforceOneTimeExecution": false,
+								"storedProcedureName": "dbo.Update_ETL_Watermark",
 								"storedProcedureParameters": {
-									"@TableName": {
-										"value": {
-											"value": "@item().SourceTableName",
-											"type": "Expression"
-										},
+									"@TableName ": {
+										"value": "@item().SourceTableName",
 										"type": "String"
 									},
 									"@NewWatermark": {
-										"value": {
-											"value": "@activity('Lookup_New_Watermark').output.firstRow.NewWatermark",
-											"type": "Expression"
-										},
+										"value": "@activity('Lookup_New_Watermark').output.firstRow.NewWatermark",
 										"type": "String"
 									}
 								}
