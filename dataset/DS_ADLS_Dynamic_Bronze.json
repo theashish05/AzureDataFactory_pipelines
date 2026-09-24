@@ -1,0 +1,73 @@
+{
+	"name": "DS_ADLS_Dynamic_Bronze",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_Telecom",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"pFolderName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().pFolderName",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "CustomerID",
+				"type": "INT32"
+			},
+			{
+				"name": "CustomerName",
+				"type": "UTF8"
+			},
+			{
+				"name": "Gender",
+				"type": "UTF8"
+			},
+			{
+				"name": "DateOfBirth",
+				"type": "DATE"
+			},
+			{
+				"name": "City",
+				"type": "UTF8"
+			},
+			{
+				"name": "State",
+				"type": "UTF8"
+			},
+			{
+				"name": "Email",
+				"type": "UTF8"
+			},
+			{
+				"name": "PhoneNumber",
+				"type": "UTF8"
+			},
+			{
+				"name": "CustomerStatus",
+				"type": "UTF8"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "INT96"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "INT96"
+			}
+		]
+	}
+}

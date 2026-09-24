@@ -1,0 +1,34 @@
+{
+	"name": "DS_SQL_ETL_Control",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQLServer_Telecom",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SourceTableName",
+				"type": "varchar"
+			},
+			{
+				"name": "SinkFolderName",
+				"type": "varchar"
+			},
+			{
+				"name": "IsActive",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ETL_Control"
+		}
+	}
+}

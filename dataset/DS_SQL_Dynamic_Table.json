@@ -1,0 +1,23 @@
+{
+	"name": "DS_SQL_Dynamic_Table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQLServer_Telecom",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"pTableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().pTableName",
+				"type": "Expression"
+			}
+		}
+	}
+}
