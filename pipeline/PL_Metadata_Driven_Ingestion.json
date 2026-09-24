@@ -44,7 +44,8 @@
 						"value": "@activity('Lookup_ETL_Control').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
+					"batchCount": 1,
 					"activities": [
 						{
 							"name": "Copy_Dynamic_SQL_To_Bronze",
@@ -69,7 +70,7 @@
 								"source": {
 									"type": "SqlServerSource",
 									"sqlReaderQuery": {
-										"value": "SELECT *\nFROM [dbo].[@{item().SourceTableName}]\nWHERE ModifiedDate > '@{activity('Lookup_Previous_Watermark').output.firstRow.LastWatermark}'",
+										"value": "@concat(\n'SELECT * FROM [dbo].[',\nitem().SourceTableName,\n'] WHERE ModifiedDate > ''',\nactivity('Lookup_Previous_Watermark').output.firstRow.LastWatermark,\n''''\n)",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
