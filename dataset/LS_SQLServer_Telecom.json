@@ -1,0 +1,12 @@
+{
+	"name": "LS_SQLServer_Telecom",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQLServer_Telecom",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
