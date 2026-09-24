@@ -67,7 +67,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"sqlReaderQuery": "SELECT *\nFROM [dbo].[@{item().SourceTableName}]\nWHERE ModifiedDate > '@{activity('Lookup_Previous_Watermark').output.firstRow.LastWatermark}'",
+									"sqlReaderQuery": {
+										"value": "SELECT *\nFROM [dbo].[@{item().SourceTableName}]\nWHERE ModifiedDate > '@{activity('Lookup_Previous_Watermark').output.firstRow.LastWatermark}'",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -130,7 +133,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"sqlReaderQuery": "SELECT LastWatermark\nFROM ETL_Watermark\nWHERE TableName = '@{item().SourceTableName}'",
+									"sqlReaderQuery": {
+										"value": "SELECT LastWatermark\nFROM ETL_Watermark\nWHERE TableName = '@{item().SourceTableName}'",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -162,7 +168,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"sqlReaderQuery": "SELECT MAX(ModifiedDate) AS NewWatermark\nFROM [dbo].[@{item().SourceTableName}]",
+									"sqlReaderQuery": {
+										"value": "SELECT MAX(ModifiedDate) AS NewWatermark\nFROM [dbo].[@{item().SourceTableName}]",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -192,7 +201,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "Update_ETL_Watermark",
+								"storedProcedureName": "dbo.Update_ETL_Watermark",
 								"storedProcedureParameters": {
 									"@TableName": {
 										"value": {
@@ -202,7 +211,10 @@
 										"type": "String"
 									},
 									"@NewWatermark": {
-										"value": "@activity('Lookup_New_Watermark').output.firstRow.NewWatermark",
+										"value": {
+											"value": "@activity('Lookup_New_Watermark').output.firstRow.NewWatermark",
+											"type": "Expression"
+										},
 										"type": "String"
 									}
 								}
